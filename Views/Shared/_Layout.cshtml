@@ -57,11 +57,30 @@
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     <li class="dropdown">
-                        <a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
+                        @* <a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a asp-action="Login" asp-controller="Account">Login</a></li>
                             <li><a asp-action="Register" asp-controller="Account">Register</a></li>
-                        </ul>
+                        </ul> *@
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li>
+                            <a class="dropdown-item">@User.Identity.Name</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-controller="Account" asp-action="LogOut">Log Out</a>
+                        </li>
+                        }
+                        else
+                        {
+                        <li>
+                            <a class="dropdown-item" asp-action="Login" asp-controller="Account" asp-route-ReturnUrl=@Context.Request.Path>Login</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-action="Register" asp-controller="Account">Register</a>
+                        </li>
+                        }
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

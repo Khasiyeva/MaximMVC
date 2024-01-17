@@ -41,33 +41,39 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input asp-for="Name" class="form-control form-control-user" id="exampleFirstName"
                                                placeholder="First Name">
-                                    </div>
+                                        <span asp-validation-for="Name" style="color:red"></span>
+                                        </div>
                                     <div class="col-sm-6">
                                         <input asp-for="Surname" class="form-control form-control-user" id="exampleLastName"
                                                placeholder="Last Name">
+                                            <span asp-validation-for="Surname" style="color:red"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input asp-for="Username" class="form-control form-control-user" id="exampleInputEmail"
                                            placeholder="Username">
+                                        <span asp-validation-for="Username" style="color:red"></span>
                                 </div>
                                 <div class="form-group">
                                     <input asp-for="Email" class="form-control form-control-user" id="exampleInputEmail"
                                            placeholder="Email Address">
+                                        <span asp-validation-for="Email" style="color:red"></span>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input asp-for="Password" class="form-control form-control-user"
                                                id="exampleInputPassword" placeholder="Password">
+                                            <span asp-validation-for="Password" style="color:red"></span>
                                     </div>
                                     <div class="col-sm-6">
                                         <input asp-for="ConfirmPassword" class="form-control form-control-user"
                                                id="exampleRepeatPassword" placeholder="Repeat Password">
+                                            <span asp-validation-for="ConfirmPassword" style="color:red"></span>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">

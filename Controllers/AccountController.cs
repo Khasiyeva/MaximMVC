@@ -48,7 +48,7 @@ namespace MaximMVC.Controllers
             }
 
             await _signInManager.SignInAsync(user, false);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
 
         public IActionResult Login()
@@ -67,7 +67,7 @@ namespace MaximMVC.Controllers
             var user = await _userManager.FindByEmailAsync(loginVM.UsernameOrEmail);
             if(user == null)
             {
-                _userManager.FindByNameAsync(loginVM.UsernameOrEmail);
+                user= await _userManager.FindByNameAsync(loginVM.UsernameOrEmail);
 
                 if (user == null)
                 {
@@ -88,9 +88,9 @@ namespace MaximMVC.Controllers
                 ModelState.AddModelError("", "Waiting");
                 return View();
             }
-           
-           
-            return RedirectToAction("Login");
+
+           await _signInManager.SignInAsync(user,true);
+            return RedirectToAction("Index");
         }
 
         public IActionResult LogOut()
